@@ -12,6 +12,7 @@ def editdb(query:str):
     """
     mycursor.execute(query)
     mydb.commit()
+    print('')
 
 
 mydb = mysql.connector.connect(
@@ -44,7 +45,7 @@ while True:
                 print(result)
         case 2:
             # new entry is added by taking in user entries and creating a new mysql tuple by inserting info into logininfo table
-            app = input('What is the name of the application? ').lower
+            app = input('What is the name of the application? ')
             username = input('Enter your username: ')
             password = getpass('Enter your password: ')
             SQL = 'INSERT INTO logininfo (Application, Username, Password) VALUES (%s, %s, %s)'
@@ -68,16 +69,13 @@ while True:
                 editdb(edit)
                 print(f'{app} has been updated with a new username')
         case 4:
-            pass
+            choice = input('What application would you like to delete? ')
+            delete = f"DELETE FROM logininfo WHERE Application = '{choice}'"
+            editdb(delete)
+            print(f'{choice} has been deleted from the database)')
         case 5:
             # quits program
             sys.exit()
         case _:
             print('invalid option, try again')
-
-
-
-
-
-
   

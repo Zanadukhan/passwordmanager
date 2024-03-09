@@ -16,7 +16,7 @@ def editdb(query:str):
 
 # TODO: Add Salting and Hashing Function to every password occurance
 # TODO: Initial DB creation for first time use
-
+# TODO: Add a new function for getting unhashed and desalted password or figure out how to return it
 mydb = mysql.connector.connect(
         host ='localhost',
         user ='root',

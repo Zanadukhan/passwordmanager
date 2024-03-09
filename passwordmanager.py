@@ -1,5 +1,6 @@
-import mysql.connector
+from getpass import getpass
 import os, sys
+import mysql.connector
 
 
 mydb = mysql.connector.connect(
@@ -14,6 +15,7 @@ mycursor = mydb.cursor()
 
 
 while True:
+    print('')
     print('1. View all entries')
     print('2. Add a new entry')
     print('3. edit an entry')
@@ -28,17 +30,16 @@ while True:
             print('')
             for result in myresults:
                 print(result)
-            print('')
         case 2:
-            loginID = int(input('Enter the entry #: '))
+            # new entry is added by taking in user entries and creating a new mysql tuple by inserting info into logininfo table)
             app = input('What is the name of the application? ')
             username = input('Enter your username: ')
-            password = input('Enter your password: ')
-            SQL = 'INSERT INTO logininfo (LoginID, Application, Username, Password) VALUES (%s, %s, %s, %s)'
-            VAL = (loginID, app, username, password)
+            password = getpass('Enter your password: ')
+            SQL = 'INSERT INTO logininfo (Application, Username, Password) VALUES (%s, %s, %s)'
+            VAL = (app, username, password)
             mycursor.execute(SQL, VAL)
             mydb.commit()
-            print('new entry added')
+            print(f'login info for {app} has been added')
         case 3:
             pass
         case 4:
@@ -52,9 +53,5 @@ while True:
 
 
 
-
-
-# SQL = 'INSERT INTO logininfo (LoginID, Application, Username, Password) VALUES (%s, %s, %s, %s)'
-# VAL = (1, "test", 'admin', 'password')
 
   

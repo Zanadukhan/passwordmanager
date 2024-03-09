@@ -14,6 +14,8 @@ def editdb(query:str):
     mydb.commit()
     print('')
 
+# TODO: Add Salting and Hashing Function to every password occurance
+# TODO: Initial DB creation for first time use
 
 mydb = mysql.connector.connect(
         host ='localhost',

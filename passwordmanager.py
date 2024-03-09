@@ -13,7 +13,6 @@ def editdb(query:str):
     mycursor.execute(query)
     mydb.commit()
 
-    
 
 mydb = mysql.connector.connect(
         host ='localhost',
@@ -37,13 +36,14 @@ while True:
 
     match choice:
         case 1:
+            # returns all rows in the logininfo table as tuples
             mycursor.execute('select * from logininfo')
             myresults = mycursor.fetchall()
             print('')
             for result in myresults:
                 print(result)
         case 2:
-            # new entry is added by taking in user entries and creating a new mysql tuple by inserting info into logininfo table)
+            # new entry is added by taking in user entries and creating a new mysql tuple by inserting info into logininfo table
             app = input('What is the name of the application? ').lower
             username = input('Enter your username: ')
             password = getpass('Enter your password: ')
@@ -56,11 +56,13 @@ while True:
             app = input('What application are you trying to change? ')
             choice = input('Are you editing the password or username? ')
             if choice == 'password':
+                # this section allows the user to change the current password for chosen app
                 new_pass = getpass('what is your new password? ')
                 edit = f"UPDATE logininfo SET Password = '{new_pass}' WHERE Application = '{app}'"
                 editdb(edit)
                 print(f'{app} has been updated with a new password')
             else:
+                # this section allows the user to change the username for the chosen app
                 new_user = input('What is your new username?')
                 edit = f"UPDATE logininfo SET Username = '{new_user}' WHERE Application = '{app}'"
                 editdb(edit)
@@ -68,6 +70,7 @@ while True:
         case 4:
             pass
         case 5:
+            # quits program
             sys.exit()
         case _:
             print('invalid option, try again')

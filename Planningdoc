@@ -1,0 +1,38 @@
+functions:
+1. add an ENTRY
+2. append an ENTRY
+3. delete an ENTRY
+4. view all entries
+
+
+
+
+
+NEW ENTRY
+Ask the User for 
+A. Username/Email
+B. Password
+C. Website
+
+
+optional: password generator
+
+
+(mandatory DO IT: salt and hash password)
+
+2. Enter into mysql database
+
+
+
+
+RETRIEVE ENTRY
+query for site credentials
+return password and username
+
+
+
+
+database
+
+Columns
+LoginID, Application, Username, Password
